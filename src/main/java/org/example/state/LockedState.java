@@ -1,6 +1,6 @@
 package org.example.state;
 
-import org.example.DoorLockContext;
+import org.example.model.DoorLockContext;
 import org.example.datasource.DoorLockRepository;
 import org.example.model.Code;
 

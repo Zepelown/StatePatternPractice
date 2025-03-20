@@ -1,6 +1,6 @@
 package org.example.state;
 
-import org.example.DoorLockContext;
+import org.example.model.DoorLockContext;
 import org.example.model.Code;
 
 public class UnlockedState implements LockState{
