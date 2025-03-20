@@ -18,6 +18,7 @@ public class LockedState implements LockState{
             context.openDoor();
             return;
         }
+        System.out.println("문이 열렸습니다.");
         context.setLockState(UnlockedState.getInstance());
     }
 

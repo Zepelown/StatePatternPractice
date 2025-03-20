@@ -27,8 +27,6 @@ public class DoorLockContext {
     }
 
     private void waitForClose() {
-        if (doorLockInput.getCloseDoorInput()) {
-            lockState.closeDoor(this);
-        }
+        lockState.closeDoor(this);
     }
 }

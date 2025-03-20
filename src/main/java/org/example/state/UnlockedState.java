@@ -2,6 +2,9 @@ package org.example.state;
 
 import org.example.model.DoorLockContext;
 import org.example.model.Code;
+import org.example.service.DoorLockScheduler;
+
+import java.util.concurrent.TimeUnit;
 
 public class UnlockedState implements LockState{
     private static final UnlockedState unlockedState = new UnlockedState();
@@ -16,7 +19,13 @@ public class UnlockedState implements LockState{
 
     @Override
     public void closeDoor(DoorLockContext context) {
-        System.out.println("문을 닫습니다.");
-        context.setLockState(LockedState.getInstance());
+        DoorLockScheduler.run(new Runnable() {
+            @Override
+            public void run() {
+                context.setLockState(LockedState.getInstance());
+                System.out.println("문이 자동으로 잠겼습니다.");
+                DoorLockScheduler.shutdownScheduler();
+            }
+        }, 2, TimeUnit.SECONDS);
     }
 }
